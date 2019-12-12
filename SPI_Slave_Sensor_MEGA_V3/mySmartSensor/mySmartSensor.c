@@ -35,96 +35,96 @@ void SmartSensor(void){
 	}break;
 
 	/* Send low byte sensor 0	*/
-	case 0x01:{
+	case 0x10:{
 		myADC_read(0, 0, &SL0, 0);		// only save value to variable SL0
 		Kirim = SL0;
 	}break;
 
 	/* Send high byte sensor 0	*/
-	case 0x02:{
+	case 0x11:{
 		myADC_read(0, &SH0, 0, 0);		// only save value to variable SL0
 		Kirim = SH0;
 	}break;
 
 	/*	Send low byte sensor 1	*/
-	case 0x03:{
+	case 0x12:{
 		myADC_read(1, 0, &SL1, 0);		// only save value to variable SL0
 		Kirim = SL1;
 	}break;
 
 	/*	Send high byte sensor 1	*/
-	case 0x04:{
+	case 0x13:{
 		myADC_read(1, &SH1, 0, 0);		// only save value to variable SL0
 		Kirim = SH1;
 	}break;
 
 	/* Send low byte sensor 2	*/
-	case 0x05:{
+	case 0x14:{
 		myADC_read(2, 0, &SL2, 0);		// only save value to variable SL0
 		Kirim = SL2;
 	}break;
 
 	/* Send low high byte sensor 2	*/
-	case 0x06:{
+	case 0x15:{
 		myADC_read(2, &SH2, 0, 0);		// only save value to variable SL0
 		Kirim = SH2;
 	}break;
 
 	/*	Send low byte threshold CH0	*/
-	case 0x07:{
+	case 0x31:{
 		calibrate_S0(0, &TL0, &TF0);
 		Kirim = TL0;
 	}break;
 
 	/*	Send high byte threshold CH0	*/
-	case 0x08:{
+	case 0x32:{
 		calibrate_S0(&TH0, 0, &TF0);
 		Kirim = TH0;
 	}break;
 
 	/*	Send low byte threshold CH1	*/
-	case 0x09:{
+	case 0x33:{
 		calibrate_S1(0, &TL1, &TF1);
 		Kirim = TL1;
 	}break;
 
 	/*	Send high byte threshold CH1	*/
-	case 0x0A:{
+	case 0x34:{
 		calibrate_S1(&TH1, 0, &TF1);
 		Kirim = TH1;
 	}break;
 
 	/*	Send low byte threshold CH2	*/
-	case 0x0B:{
+	case 0x35:{
 		calibrate_S2(0, &TL2, &TF2);
 		Kirim = TL2;
 	}break;
 
 	/*	Send high byte threshold CH2	*/
-	case 0x0C:{
+	case 0x36:{
 		calibrate_S2(&TH2, 0, &TF2);
 		Kirim = TH2;
 	}break;
 
 	/* Calibrate all sensor	*/
-	case 0x0D:{
+	case 0x37:{
 		calibrateAll();
 		Kirim = 'A';
 	}break;
 
 	/* Auto calibrate	*/
-	case 0x0E:{
+	case 0x02:{
 		calibrateAuto();
 		Kirim = 'O';
 	}break;
 
 	/* digitalRaw	*/
-	case 0x0F:{
+	case 0x01:{
 		Kirim = digitalRaw(TF2, TF1, TF0);
 	}break;
 
 	/* Decision	*/
-	case 0x10:{
+	case 0x20:{
 		dRaw = digitalRaw(TF2, TF1, TF0);
 		Kirim = dicision(dRaw);
 	}break;
